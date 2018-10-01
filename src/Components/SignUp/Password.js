@@ -1,27 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 class Password extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      password: '',
-    };
-  }
-
   handlePasswordChange = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
+    const { onChange } = this.props;
+    onChange({ password: e.target.value });
   }
 
   render() {
-    const { password } = this.state;
+    const { password } = this.props;
     return (
       <div>
         <FormGroup>
           <FormControl
-            type="text"
+            type="password"
             value={password}
             placeholder="Password"
             onChange={this.handlePasswordChange}
@@ -32,4 +26,14 @@ class Password extends Component {
   }
 }
 
-export default Password;
+Password.propTypes = {
+  password: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => {
+  const { password } = state.user;
+  return { password };
+};
+
+export default connect(mapStateToProps)(Password);

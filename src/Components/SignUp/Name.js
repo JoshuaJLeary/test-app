@@ -4,27 +4,9 @@ import { connect } from 'react-redux';
 import { FormGroup, FormControl } from 'react-bootstrap';
 
 class Name extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-    };
-  }
-
   handleNameChange = (e) => {
-    this.setState({
-      name: e.target.value,
-    });
-  }
-
-  userName = () => {
-    const { dispatch } = this.props;
-    event.preventDefault();
-    console.log('state:', this.state);
-    dispatch({
-      type: 'FETCH_EMAIL',
-      payload: this.state,
-    });
+    const { onChange } = this.props;
+    onChange({ name: e.target.value });
   }
 
   render() {
@@ -45,10 +27,13 @@ class Name extends Component {
 }
 
 Name.propTypes = {
-  name: PropTypes.string,
-  dispatch: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({ state });
+const mapStateToProps = (state) => {
+  const { name } = state.user;
+  return { name };
+};
 
 export default connect(mapStateToProps)(Name);
