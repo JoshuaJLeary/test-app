@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Name from './Name';
 import Email from './Email';
@@ -15,6 +16,11 @@ class SignUp extends Component {
     dispatch({ type: 'HANDLE_FORM_UPDATE', value });
   }
 
+  handleFormDetails = () => {
+    const { dispatch } = this.props;
+    dispatch({ type: 'SET_DETAILS' });
+  }
+
   render() {
     return (
       <div className="signUp">
@@ -26,8 +32,13 @@ class SignUp extends Component {
           <Email onChange={this.handeFormUpdate} />
           <Password onChange={this.handeFormUpdate} />
         </form>
-
-        <Button onClick={this.saveDetails}>Sign Up</Button>
+        <Link to="/welcome">
+          <Button
+            className="signUpBtn"
+            onClick={this.handleFormDetails}
+          >Sign Up
+          </Button>
+        </Link>
       </div>
     );
   }

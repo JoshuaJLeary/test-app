@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
 class Email extends Component {
   handleEmailChange = (e) => {
@@ -12,16 +12,14 @@ class Email extends Component {
   render() {
     const { email } = this.props;
     return (
-      <div>
-        <FormGroup>
-          <FormControl
-            type="email"
-            value={email}
-            placeholder="Email Address"
-            onChange={this.handleEmailChange}
-          /><br />
-        </FormGroup>
-      </div>
+      <React.Fragment>
+        <FormControl
+          type="email"
+          value={email}
+          placeholder="Email Address"
+          onChange={this.handleEmailChange}
+        /><br />
+      </React.Fragment>
     );
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
 class Password extends Component {
   handlePasswordChange = (e) => {
@@ -12,16 +12,14 @@ class Password extends Component {
   render() {
     const { password } = this.props;
     return (
-      <div>
-        <FormGroup>
-          <FormControl
-            type="password"
-            value={password}
-            placeholder="Password"
-            onChange={this.handlePasswordChange}
-          /><br />
-        </FormGroup>
-      </div>
+      <React.Fragment>
+        <FormControl
+          type="password"
+          value={password}
+          placeholder="Password"
+          onChange={this.handlePasswordChange}
+        /><br />
+      </React.Fragment>
     );
   }
 }

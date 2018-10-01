@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { FormControl } from 'react-bootstrap';
 
 class Name extends Component {
   handleNameChange = (e) => {
@@ -12,16 +12,14 @@ class Name extends Component {
   render() {
     const { name } = this.props;
     return (
-      <div>
-        <FormGroup>
-          <FormControl
-            type="text"
-            value={name}
-            placeholder="Enter Name"
-            onChange={this.handleNameChange}
-          /><br />
-        </FormGroup>
-      </div>
+      <React.Fragment>
+        <FormControl
+          type="text"
+          value={name}
+          placeholder="Enter Name"
+          onChange={this.handleNameChange}
+        /><br />
+      </React.Fragment>
     );
   }
 }

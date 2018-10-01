@@ -1,3 +1,7 @@
 .signUp {
   max-width: 33em;
+  margin: 5px;
+}
+.signUpBtn {
+  float: right;
 }
