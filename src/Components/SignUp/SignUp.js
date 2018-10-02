@@ -16,17 +16,19 @@ class SignUp extends Component {
     dispatch({ type: 'HANDLE_FORM_UPDATE', value });
   }
 
-  handleFormDetails = () => {
+  handleFormDetails = (user) => {
     const { dispatch } = this.props;
-    dispatch({ type: 'SET_DETAILS' });
+    dispatch({ type: 'SET_DETAILS', user });
   }
 
   render() {
     return (
       <div className="signUp">
         <h2>Let's</h2>
-        <h1>Sign Up</h1>
-        <p>Use the form below to sign up for this super awesome service. You're only a few steps away!</p>
+        <h1><b>Sign Up</b></h1>
+        <p>Use the form below to sign up for this super awesome service.
+          You're only a few steps away!
+        </p>
         <form>
           <Name onChange={this.handeFormUpdate} />
           <Email onChange={this.handeFormUpdate} />

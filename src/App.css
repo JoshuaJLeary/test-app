@@ -1,7 +1,20 @@
-.signUp {
+body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 540px;
+}
+p {
+  color:     #999999;
+}
+h1 {
+  margin-top: -10px;
+}
+.signUp, .welcome {
   max-width: 33em;
-  margin: 5px;
+  margin: 30px;
 }
 .signUpBtn {
   float: right;
+  background-color:    #e60073;
+  color:  #ffffff;
 }
