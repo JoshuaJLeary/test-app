@@ -24,14 +24,14 @@ class Welcome extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  const { email, name } = state.user;
-  return { email, name };
-};
 
 // Welcome.propTypes = {
 //   dispatch: PropTypes.func,
 // };
 
+const mapStateToProps = (state) => {
+  const { email, name } = state.user;
+  return { email, name };
+};
 
 export default connect(mapStateToProps)(Welcome);

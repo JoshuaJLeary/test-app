@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Name from './Name';
 import Email from './Email';
@@ -16,9 +16,13 @@ class SignUp extends Component {
     dispatch({ type: 'HANDLE_FORM_UPDATE', value });
   }
 
-  handleFormDetails = (user) => {
-    const { dispatch } = this.props;
-    dispatch({ type: 'SET_DETAILS', user });
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { history } = this.props;
+
+    // Validation
+
+    history.push('/welcome');
   }
 
   render() {
@@ -29,25 +33,27 @@ class SignUp extends Component {
         <p>Use the form below to sign up for this super awesome service.
           You're only a few steps away!
         </p>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <Name onChange={this.handeFormUpdate} />
           <Email onChange={this.handeFormUpdate} />
           <Password onChange={this.handeFormUpdate} />
-        </form>
-        <Link to="/welcome">
+
           <Button
             className="signUpBtn"
-            onClick={this.handleFormDetails}
-          >Sign Up
+            onClick={this.handleSubmit}
+            type="submit"
+          >
+            Sign Up
           </Button>
-        </Link>
+        </form>
       </div>
     );
   }
 }
 
 SignUp.propTypes = {
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-export default connect()(SignUp);
+export default withRouter(connect()(SignUp));
