@@ -15,6 +15,7 @@ h1 {
 }
 .signUpBtn {
   float: right;
+  width: 100px;
   background-color:    #e60073;
   color:  #ffffff;
 }
